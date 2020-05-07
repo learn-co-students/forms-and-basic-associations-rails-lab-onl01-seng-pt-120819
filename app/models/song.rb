@@ -19,4 +19,16 @@ class Song < ActiveRecord::Base
     self.genre ? self.genre.name : nil  
   end
 
+  def notes=(notes)  #=> overwrites writer method for notes attribute of the Song
+    notes.each do |note|
+      if !note.empty?
+        n = Note.new(:content => note, :song_id => self.id)
+        n.save 
+        self.notes << n 
+      end
+    end
+  end
+
+
+
 end
