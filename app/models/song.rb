@@ -12,5 +12,7 @@ class Song < ActiveRecord::Base
     self.artist ? self.artist.name : nil
   end
 
+  accepts_nested_attributes_for :notes, reject_if: proc { | attributes | attributes[:content].blank? }
+
 
 end
