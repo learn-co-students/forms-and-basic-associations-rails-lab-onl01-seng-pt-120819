@@ -12,15 +12,16 @@ class Song < ActiveRecord::Base
     self.artist ? self.artist.name : nil 
   end 
 
-  # def note_contents=(notes)
-  #   notes.each do |note|
-  #     note = Note.find_by(id: id)
-  #     self.notes << note
-  #   end 
-  # end 
+  def note_contents=(notes)
+    notes.each do |note|
+      if !note.empty?
+        self.notes.build(content: note)
+      end 
+    end 
+  end 
 
-  # def note_contents
-  #   self.notes
-  # end 
+  def note_contents
+    self.notes.map(&:content)
+  end 
 
 end

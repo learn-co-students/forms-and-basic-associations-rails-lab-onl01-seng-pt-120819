@@ -1,4 +1,5 @@
-  <%= f.label :notes %>
-  <input name="song[note_contents][]" id="song_notes_1">
-  <input name="song[note_contents][]" id="song_notes_2">
-  <input name="song[note_contents][]" id="song_notes_3">
+  <%= f.fields_for :notes do |note_form| %>
+    <%= note_form.label :note %>
+    <%= note_form.text_area :content, rows: 5, cols: 50 %>
+    <br/>
+  <% end %>
