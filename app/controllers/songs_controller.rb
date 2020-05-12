@@ -15,8 +15,8 @@ class SongsController < ApplicationController
 
   def create
     # binding.pry
-    artist = Artist.find_or_create_by(name: params[:song][:artist])
-    genre = Genre.find_or_create_by(name: params[:song][:genre])
+    artist = Artist.find_or_create_by(name: params[:song][:artist_name])
+    genre = Genre.find_or_create_by(name: params[:song][:genre_id])
     @song = Song.new(song_params)
     if @song.valid?
       @song.artist = artist
@@ -54,7 +54,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title)
+    params.require(:song).permit(:title, :artist_name)
   end
 end
 
