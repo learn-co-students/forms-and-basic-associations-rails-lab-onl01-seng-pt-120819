@@ -1,3 +1,4 @@
+# require 'pry'
 class SongsController < ApplicationController
   def index
     @songs = Song.all
@@ -5,6 +6,7 @@ class SongsController < ApplicationController
 
   def show
     @song = Song.find(params[:id])
+    # binding.pry
   end
 
   def new
@@ -12,15 +14,22 @@ class SongsController < ApplicationController
   end
 
   def create
+    # binding.pry
+    artist = Artist.find_or_create_by(name: params[:song][:artist_name])
+    genre = Genre.find_or_create_by(id: params[:song][:genre_id])
     @song = Song.new(song_params)
-
-    if @song.save
+    
+    if @song.valid?
+      @song.artist = artist
+      @song.genre = genre
+      @song.save
+      # binding.pry
       redirect_to @song
     else
       render :new
     end
   end
-
+ 
   def edit
     @song = Song.find(params[:id])
   end
@@ -47,7 +56,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title)
+    params.require(:song).permit(:title, :artist_name, :notes => [])
   end
 end
 
