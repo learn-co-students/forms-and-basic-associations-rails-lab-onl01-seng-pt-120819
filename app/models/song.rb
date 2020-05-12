@@ -14,4 +14,14 @@ class Song < ActiveRecord::Base
     self.artist ? self.artist.name : nil
   end
 
+  def notes=(notes)  
+    notes.each do |note|
+      if !note.empty?
+        n = Note.new(:content => note, :song_id => self.id)
+        n.save 
+        self.notes << n 
+      end
+    end
+  end
+
 end

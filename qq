@@ -1,0 +1,19 @@
+
+[1mFrom:[0m /home/swishyfishie/code/labs/forms-and-basic-associations-rails-lab-onl01-seng-pt-120819/app/controllers/songs_controller.rb:21 SongsController#create:
+
+    [1;34m16[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m17[0m:   [1;34m# binding.pry[0m
+    [1;34m18[0m:   artist = [1;34;4mArtist[0m.find_or_create_by([35mname[0m: params[[33m:song[0m][[33m:artist_name[0m])
+    [1;34m19[0m:   genre = [1;34;4mGenre[0m.find_or_create_by([35mid[0m: params[[33m:song[0m][[33m:genre_id[0m])
+    [1;34m20[0m:   @song = [1;34;4mSong[0m.new(song_params)
+ => [1;34m21[0m:   binding.pry
+    [1;34m22[0m:   [32mif[0m @song.valid?
+    [1;34m23[0m:     @song.artist = artist
+    [1;34m24[0m:     @song.genre = genre
+    [1;34m25[0m:     @song.save
+    [1;34m26[0m:     redirect_to @song
+    [1;34m27[0m:   [32melse[0m
+    [1;34m28[0m:     render [33m:new[0m
+    [1;34m29[0m:   [32mend[0m
+    [1;34m30[0m: [32mend[0m
+
