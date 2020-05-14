@@ -8,7 +8,8 @@
   <%= f.label "Select Genre" %>
   <%= f.select :genre_id, options_from_collection_for_select(Genre.all, "id", "name") %>
   
-
+  <input name="song[note_contents][]" id="song_notes_attributes_0_content">
+ <input name="song[note_contents][]" id="song_notes_attributes_1_content">
   <br />
 
   <%= f.submit %>
