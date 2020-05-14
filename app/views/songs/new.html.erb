@@ -7,12 +7,14 @@
 
   <%= f.label "Select Genre" %>
   <%= f.select :genre_id, options_from_collection_for_select(Genre.all, "id", "name") %>
+
   <h2>Notes</h2>
-  <%= f.fields_for :notes do |note_form| %>
-  <%= note_form.label :note %>
-  <%= note_form.text_area :content %>
+   <!-- <%= f.fields_for :notes do |note_form| %>
+    <%= note_form.label :note %>
+    <%= note_form.text_area :content %>
 
-  <% end %>
-
+    <% end %> -->
+    <input name="song[note_info][]" id="song_notes_attributes_0_content">
+    <input name="song[note_info][]" id="song_notes_attributes_1_content">
   <%= f.submit %>
 <% end %>
