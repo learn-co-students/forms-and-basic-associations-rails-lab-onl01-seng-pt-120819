@@ -3,9 +3,22 @@
 <%= form_for @song  do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <%= f.text_field :artist_name %>
   <br />
+  <!--<%= fields_for :genre, @song.genre do |p| %>
+    Admin?  : <%= p.check_box :admin %> -->
 
   <%= f.submit %>
 <% end %>
 
+<!-- <%= form_for @person do |person_form| %>
+  First name: <%= person_form.text_field :first_name %>
+  Last name : <%= person_form.text_field :last_name %>
+
+  <%= fields_for :permission, @person.permission do |permission_fields| %>
+    Admin?  : <%= permission_fields.check_box :admin %>
+  <% end %> -->
+
+  <%= person_form.submit %>
+<% end %>
 
