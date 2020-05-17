@@ -1,2 +1,6 @@
 <h1>Artists#index</h1>
 <p>Find me in app/views/artists/index.html.erb</p>
+<% @artist.each do |artist| %>
+<span class=artist-name><%= artist.name %></span>
+<span class=artist-songs><%= artist.try(:song).try(:name) %></span>
+<% end %>
