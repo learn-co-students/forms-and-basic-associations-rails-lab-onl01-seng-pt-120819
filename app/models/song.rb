@@ -1,3 +1,5 @@
+require 'pry'
+
 class Song < ActiveRecord::Base
   belongs_to :artist 
   belongs_to :genre
@@ -25,15 +27,9 @@ class Song < ActiveRecord::Base
   end
 
   def note_contents
+    
     self.notes.collect(&:content)
   end
 
-  def note_contents=(note_contents)
-    note_contents.each do |content| 
-      unless content.empty?
-        self.notes << Note.create(content: content)
-        self.save 
-      end
-    end
-  end
+  
 end
